@@ -1,0 +1,6 @@
+framework module Pods_CodingGirl {
+  umbrella header "Pods-CodingGirl-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_CodingGirlUITests {
+  umbrella header "Pods-CodingGirlUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
