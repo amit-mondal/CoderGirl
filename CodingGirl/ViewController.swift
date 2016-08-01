@@ -37,6 +37,7 @@ class ViewController: UIViewController {
         if redir {
             performSegueWithIdentifier("goToBuild", sender: self)
         }
+        redir = false
     }
 
     override func didReceiveMemoryWarning() {
