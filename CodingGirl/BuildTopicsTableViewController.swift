@@ -17,9 +17,10 @@ class BuildTopicsTableViewController: UITableViewController {
             tableViewObj.reloadData()
         }
     }
+    @IBOutlet weak var barButton: UIBarButtonItem!
     
     var selectedSet: CommandSet?
-
+    let pink = UIColor(netHex: 0xF46197)
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewObj.delegate = self
@@ -33,6 +34,8 @@ class BuildTopicsTableViewController: UITableViewController {
                 realm.add(generateInitialSet())
             }
         }
+        
+        barButton.setTitleTextAttributes([ NSForegroundColorAttributeName : pink, NSFontAttributeName : UIFont(name: "AvenirNext-DemiBold", size: 15)! ], forState: .Normal)
     
         commandSets = realm.objects(CommandSet)
         // Uncomment the following line to preserve selection between presentations

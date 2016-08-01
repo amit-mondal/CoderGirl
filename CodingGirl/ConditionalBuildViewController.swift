@@ -190,6 +190,8 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.editing = true
+        
         commands = generateCommandsList()
         
 
@@ -284,5 +286,27 @@ extension ConditionalBuildViewController: UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
+    
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+
+    func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .None
+    }
+    
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        var itemToMove = commandSet.commandList[sourceIndexPath.row]
+        commandSet.commandList.removeAtIndex(sourceIndexPath.row)
+        commandSet.commandList.insert(itemToMove, atIndex: destinationIndexPath.row)
+    }
+    
+    
+ 
 
 }
