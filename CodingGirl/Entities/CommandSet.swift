@@ -43,8 +43,14 @@ class CommandSet: Object {
         }
     }
     
-    func remove(command: Command) {
-        
+    func setWithoutElement(sIndex: Int) -> CommandSet {
+        let set = CommandSet()
+        for index in 0 ... self.commandList.count - 1 {
+            if index != sIndex {
+                set.add(self.commandList[index])               
+            }
+        }
+        return set
     }
     
     

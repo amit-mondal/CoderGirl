@@ -32,6 +32,11 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
         }
     }
     
+    @IBAction func editButtonPressed(sender: AnyObject) {
+        let button = sender as! UIBarButtonItem
+        button.title = self.tableView.editing ? "Edit" : "Done"
+        self.tableView.setEditing(!self.tableView.editing, animated: true)
+    }
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -190,8 +195,6 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.editing = true
-        
         commands = generateCommandsList()
         
 
@@ -296,14 +299,24 @@ extension ConditionalBuildViewController: UITableViewDelegate, UITableViewDataSo
         return false
     }
     
+    /*
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return .None
     }
+    
+    */
     
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         var itemToMove = commandSet.commandList[sourceIndexPath.row]
         commandSet.commandList.removeAtIndex(sourceIndexPath.row)
         commandSet.commandList.insert(itemToMove, atIndex: destinationIndexPath.row)
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            let newSet = self.commandSet.setWithoutElement(indexPath.row)
+            self.commandSet = newSet
+        }
     }
     
     

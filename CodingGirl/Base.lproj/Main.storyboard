@@ -169,7 +169,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3lA-aM-HgE" id="2qf-bv-srN">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkt-Xh-9Hb">
@@ -764,10 +764,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="MPh-Qg-hCz"/>
+                                        <exclude reference="RbX-wx-nHq"/>
                                         <exclude reference="VEp-Z3-4Ke"/>
                                         <exclude reference="ixw-d6-Dl1"/>
-                                        <exclude reference="RbX-wx-nHq"/>
-                                        <exclude reference="MPh-Qg-hCz"/>
                                     </mask>
                                 </variation>
                             </textView>
@@ -841,9 +841,9 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Sk5-ME-Fa7"/>
-                                        <exclude reference="FOI-Qf-sQk"/>
                                         <exclude reference="Bja-z2-pba"/>
+                                        <exclude reference="FOI-Qf-sQk"/>
+                                        <exclude reference="Sk5-ME-Fa7"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -894,9 +894,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="vfA-dl-08s"/>
-                                        <exclude reference="JGT-gF-Hfc"/>
                                         <exclude reference="4IW-gP-9YZ"/>
+                                        <exclude reference="JGT-gF-Hfc"/>
+                                        <exclude reference="vfA-dl-08s"/>
                                     </mask>
                                 </variation>
                             </textView>
@@ -920,9 +920,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="vpO-57-1hh"/>
-                                        <exclude reference="nME-Ht-k1K"/>
                                         <exclude reference="aon-E6-mXU"/>
+                                        <exclude reference="nME-Ht-k1K"/>
+                                        <exclude reference="vpO-57-1hh"/>
                                     </mask>
                                 </variation>
                             </textView>
@@ -950,9 +950,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="zXY-rh-InP"/>
                                         <exclude reference="Ly4-oe-izO"/>
                                         <exclude reference="VCP-h8-bhV"/>
+                                        <exclude reference="zXY-rh-InP"/>
                                     </mask>
                                 </variation>
                             </textView>
@@ -1025,9 +1025,9 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="xk5-MH-Vgh"/>
                                         <exclude reference="FdJ-zN-Cva"/>
                                         <exclude reference="Ok4-ta-zrU"/>
+                                        <exclude reference="xk5-MH-Vgh"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1081,10 +1081,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="YCl-d9-3MS"/>
-                                        <exclude reference="cNy-w0-6wk"/>
                                         <exclude reference="6ka-Tf-QCG"/>
                                         <exclude reference="D49-rW-Mxi"/>
+                                        <exclude reference="YCl-d9-3MS"/>
+                                        <exclude reference="cNy-w0-6wk"/>
                                     </mask>
                                 </variation>
                             </textView>
@@ -1109,8 +1109,8 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="9gc-bt-GdN"/>
                                         <exclude reference="6n1-qs-f89"/>
+                                        <exclude reference="9gc-bt-GdN"/>
                                         <exclude reference="Wh8-Ve-DJb"/>
                                     </mask>
                                 </variation>
@@ -1175,9 +1175,9 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="K9l-6o-Tda"/>
-                                        <exclude reference="Bt9-0h-88u"/>
                                         <exclude reference="BCX-WO-O2q"/>
+                                        <exclude reference="Bt9-0h-88u"/>
+                                        <exclude reference="K9l-6o-Tda"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1215,9 +1215,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="pUD-F8-gjj"/>
-                                        <exclude reference="mI3-E5-CAg"/>
                                         <exclude reference="DmV-0l-XRU"/>
+                                        <exclude reference="mI3-E5-CAg"/>
+                                        <exclude reference="pUD-F8-gjj"/>
                                     </mask>
                                 </variation>
                             </textView>
@@ -1257,10 +1257,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="xl2-an-FBM"/>
                                         <exclude reference="0re-Kp-Hwu"/>
                                         <exclude reference="RAj-lb-pga"/>
                                         <exclude reference="kUY-fG-FHh"/>
+                                        <exclude reference="xl2-an-FBM"/>
                                     </mask>
                                 </variation>
                             </textView>
@@ -1592,7 +1592,14 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Build" id="ELb-PO-sZS"/>
+                    <navigationItem key="navigationItem" title="Build" id="ELb-PO-sZS">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="n6Z-oT-cdU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="editButtonPressed:" destination="oje-uz-g2l" id="Xhk-gs-bMa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="mHx-qk-u9L" id="U3M-F5-aNi"/>
@@ -1654,8 +1661,8 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="bQ5-VF-Oup"/>
-                                        <exclude reference="qlq-Uz-hXZ"/>
                                         <exclude reference="mup-WY-djO"/>
+                                        <exclude reference="qlq-Uz-hXZ"/>
                                     </mask>
                                 </variation>
                             </view>
