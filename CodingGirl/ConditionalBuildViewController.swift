@@ -13,6 +13,7 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
     var selectedCell: NSIndexPath?
     var commands: [String] = []
     var cleaned = false
+    var errorIndex = -1
     var originalSet: CommandSet?
     var commandSet = CommandSet() {
         didSet {
@@ -202,6 +203,22 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        print("Error at: \(errorIndex)")
+        let lastIndex = self.commandSet.commandList.count - 1
+        if (errorIndex > 0) {
+            if (errorIndex > lastIndex) {
+                let path = NSIndexPath(forRow: lastIndex, inSection: 0)
+                self.tableView.selectRowAtIndexPath(path, animated: true, scrollPosition: .Middle)
+            }
+            else {
+                let path = NSIndexPath(forRow: errorIndex, inSection: 0)
+                self.tableView.selectRowAtIndexPath(path, animated: true, scrollPosition: .Middle)
+            }
+            
+        }
+        
+    }
 
 
     override func didReceiveMemoryWarning() {
@@ -217,6 +234,7 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "runSegue"
         {
+            errorIndex = -1
             let destination = segue.destinationViewController as! ConditionalRunViewController
             destination.commandSet = commandSet
             print("sending command set from pFS\(commandSet.commandList.count)")
@@ -286,6 +304,9 @@ extension ConditionalBuildViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cBuildBlock", forIndexPath: indexPath) as! ConditionalBuildTableViewCell
         cell.command = commandSet.commandList[indexPath.row]
+        let bgView = UIView()
+        bgView.backgroundColor = UIColor(netHex: 0xff4d4d)
+        cell.selectedBackgroundView = bgView
         return cell
     }
     
@@ -316,6 +337,7 @@ extension ConditionalBuildViewController: UITableViewDelegate, UITableViewDataSo
         if (editingStyle == .Delete) {
             let newSet = self.commandSet.setWithoutElement(indexPath.row)
             self.commandSet = newSet
+            
         }
     }
     

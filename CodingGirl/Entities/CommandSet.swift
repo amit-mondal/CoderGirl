@@ -50,6 +50,7 @@ class CommandSet: Object {
                 set.add(self.commandList[index])               
             }
         }
+        set.name = self.name
         return set
     }
     

@@ -287,6 +287,7 @@
 				TargetAttributes = {
 					28381E6D1D31F03B00E33964 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = FJZN4A9UP6;
 					};
 					28381E811D31F03B00E33964 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -629,10 +630,13 @@
 			baseConfigurationReference = 13416F3ED0412DD4B30FEC59 /* Pods-CodingGirl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CodingGirl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.amitmondal.CodingGirl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mondal.CodingGirl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -642,10 +646,13 @@
 			baseConfigurationReference = EA06AFB460BF53FF16F3B8CD /* Pods-CodingGirl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CodingGirl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.amitmondal.CodingGirl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mondal.CodingGirl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

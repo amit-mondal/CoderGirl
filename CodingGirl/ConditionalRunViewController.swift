@@ -99,7 +99,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
         //inputField.userInteractionEnabled = false
         var list = set.commandList
         if (set.elseList.count > set.ifList.count) {
-            displayError("Cannot have \"Else\" without \"If\"")
+            displayError("Cannot have \"Else\" without \"If\"", eIndex: -1)
             return
         }
         while i < list.count {
@@ -107,7 +107,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
             if command.isEndIf() {
                 endif = false
             }
-            print("endif: \(endif), foundTrue: \(foundTrue) - \(command.type): \(command.value)")
+            print("i: \(i), endif: \(endif), foundTrue: \(foundTrue) - \(command.type): \(command.value)")
             if !endif {
                 
                 switch command.type.lowercaseString {
@@ -121,7 +121,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                     print ("found ask, waiting for input...")
                     return
                 case "equals":
-                    print("equals")
+                    displayError("Misplaced \"Equals\" statement - at command \(i+1)", eIndex: i + 1)
                 case "if":
                     if i < list.count - 1 && list[i+1].type == "equals" {
                         let conditionCommands = getConditionCommands(set, startIndex: i)
@@ -134,10 +134,10 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                             print("FALSE")
                             endif = true
                         }
-                        i += (conditionCommands.count - 1)
+                        i += conditionCommands.count
                     }
                     else {
-                        displayError("No condition after \"If\" block - at command \(i+1)")
+                        displayError("No condition after \"If\" block - at command \(i+1)", eIndex: i + 1)
                     }
                 case "say":
                     speechRect.hidden = false
@@ -149,16 +149,17 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                     }
                     foundTrue = false
                 case "and":
-                    displayError("Misplaced \"And\" statement - at command \(i+1)")
+                    displayError("Misplaced \"And\" statement - at command \(i+1)", eIndex: i + 1)
                 case "or":
-                    displayError("Misplaced \"Or\" statement - at command \(i+1)")
+                    displayError("Misplaced \"Or\" statement - at command \(i+1)", eIndex: i + 1)
                 default:
-                    displayError("Unknown Command")
+                    displayError("Unknown Command", eIndex: -1)
                 }
             }
             i += 1
         }
     }
+    
     
     func getConditionCommands(commandSet: CommandSet, startIndex: Int) -> [Command]{
         print("getting condition commands...")
@@ -167,7 +168,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
         var foundConditionEnd: Bool = false
         while !foundConditionEnd {
             if j >= commandSet.commandList.count {
-                displayError("No condition end found - at command \(i+commandSet.commandList.count - 1)")
+                displayError("No condition end found - at command \(i+commandSet.commandList.count - 1)", eIndex: i+commandSet.commandList.count - 1)
                 break
             }
             var command = commandSet.commandList[j]
@@ -180,7 +181,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
             j += 1
         }
         if conditions.count < 1 {
-            displayError("No condition after \"If\" block - at command \(i+1)")
+            displayError("No condition after \"If\" block - at command \(i+1)", eIndex: i + 1)
         }
         return conditions
     }
@@ -188,16 +189,16 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
     func booleanEvaluate(conditions: [Command]) -> Bool {
         print("evaluating condition booleans...")
         if conditions.count < 1 {
-            displayError("No condition after \"If\" block - at command \(i+1)")
+            displayError("No condition after \"If\" block - at command \(i+1)", eIndex: i + 1)
             return false
         }
         var result = getBoolFromCommand(conditions[0])
         var j = 1
         while j < conditions.count {
-            print("j \(j), count \(conditions.count), condition \((j+2) >= conditions.count)")
+            //print("j \(j), count \(conditions.count), condition \((j+2) >= conditions.count)")
             if (j+1) >= conditions.count {
                 print()
-                displayError("Condition does not correctly place booleans and operators  - near command \(i+j+1)")
+                displayError("Condition does not correctly place booleans and operators  - near command \(i+j+1)", eIndex: i + j + 1)
             }
             else if conditions[j].type == "and" {
                 result = result && getBoolFromCommand(conditions[j+1])
@@ -219,16 +220,18 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         else {
-            displayError("Expected \"Equals\" command, found \(command.type.uppercaseString) instead - at condition starting with command \(i+1)")
+            displayError("Expected \"Equals\" command, found \(command.type.uppercaseString) instead - at condition starting with command \(i+1)", eIndex: i + 1)
             return false
         }
     }
     
-    func displayError(error: String) {
+    func displayError(error: String, eIndex: Int) {
         var alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
-        let ok = UIAlertAction(title: "OK", style: .Default, handler: {[unowned self]  (action) -> Void in
+        let ok = UIAlertAction(title: "OK", style: .Default, handler: {[unowned self, eIndex]  (action) -> Void in
+            let buildVC = self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 2] as! ConditionalBuildViewController
+            buildVC.errorIndex = eIndex
             self.navigationController?.popViewControllerAnimated(true)
-            })
+        })
         alert.addAction(ok)
         self.presentViewController(alert, animated: true, completion: nil)
     }

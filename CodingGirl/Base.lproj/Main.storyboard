@@ -1496,7 +1496,7 @@
                                 <rect key="frame" x="0.0" y="172" width="600" height="262"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cBuildBlock" rowHeight="68" id="368-Q1-MLF" customClass="ConditionalBuildTableViewCell" customModule="CodingGirl" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cBuildBlock" rowHeight="68" id="368-Q1-MLF" customClass="ConditionalBuildTableViewCell" customModule="CodingGirl" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="368-Q1-MLF" id="zXg-YH-tuS">
