@@ -196,6 +196,8 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.tableView.allowsSelection = false
+        
         commands = generateCommandsList()
         
 
@@ -207,6 +209,7 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
         print("Error at: \(errorIndex)")
         let lastIndex = self.commandSet.commandList.count - 1
         if (errorIndex >= 0) {
+            self.tableView.allowsSelection = true
             if (errorIndex > lastIndex) {
                 let path = NSIndexPath(forRow: lastIndex, inSection: 0)
                 self.tableView.selectRowAtIndexPath(path, animated: true, scrollPosition: .Middle)
@@ -215,7 +218,6 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
                 let path = NSIndexPath(forRow: errorIndex, inSection: 0)
                 self.tableView.selectRowAtIndexPath(path, animated: true, scrollPosition: .Middle)
             }
-            
         }
         
     }

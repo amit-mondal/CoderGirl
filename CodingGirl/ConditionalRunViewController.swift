@@ -45,6 +45,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
     var i = 0
     var endif = false
     var foundTrue = false
+    var foundIf = false
     var commandSet: CommandSet? {
         didSet {
             //evaluate(commandSet!)
@@ -123,6 +124,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                 case "equals":
                     displayError("Misplaced \"Equals\" statement - at command \(i+1)", eIndex: i)
                 case "if":
+                    foundIf = true
                     if i < list.count - 1 && list[i+1].type == "equals" {
                         let conditionCommands = getConditionCommands(set, startIndex: i)
                         let expressionResult = booleanEvaluate(conditionCommands)
@@ -144,6 +146,11 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                     outputTextView.text = command.value
                     print("Set Label to \(command.value)")
                 case "else":
+                    if !foundIf {
+                        displayError("Cannot have \"Else\" without \"If\" - at command \(i+1)", eIndex: i)
+                        return
+                    }
+                    foundIf = false
                     if foundTrue {
                         endif = true
                     }
@@ -224,6 +231,8 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
             return false
         }
     }
+    
+    
     
     func displayError(error: String, eIndex: Int) {
         var alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
