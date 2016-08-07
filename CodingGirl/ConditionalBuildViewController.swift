@@ -206,7 +206,7 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
     override func viewDidAppear(animated: Bool) {
         print("Error at: \(errorIndex)")
         let lastIndex = self.commandSet.commandList.count - 1
-        if (errorIndex > 0) {
+        if (errorIndex >= 0) {
             if (errorIndex > lastIndex) {
                 let path = NSIndexPath(forRow: lastIndex, inSection: 0)
                 self.tableView.selectRowAtIndexPath(path, animated: true, scrollPosition: .Middle)

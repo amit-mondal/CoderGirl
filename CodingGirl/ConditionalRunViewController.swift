@@ -121,7 +121,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                     print ("found ask, waiting for input...")
                     return
                 case "equals":
-                    displayError("Misplaced \"Equals\" statement - at command \(i+1)", eIndex: i + 1)
+                    displayError("Misplaced \"Equals\" statement - at command \(i+1)", eIndex: i)
                 case "if":
                     if i < list.count - 1 && list[i+1].type == "equals" {
                         let conditionCommands = getConditionCommands(set, startIndex: i)
@@ -137,7 +137,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                         i += conditionCommands.count
                     }
                     else {
-                        displayError("No condition after \"If\" block - at command \(i+1)", eIndex: i + 1)
+                        displayError("No condition after \"If\" block - at command \(i+1)", eIndex: i )
                     }
                 case "say":
                     speechRect.hidden = false
@@ -149,9 +149,9 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                     }
                     foundTrue = false
                 case "and":
-                    displayError("Misplaced \"And\" statement - at command \(i+1)", eIndex: i + 1)
+                    displayError("Misplaced \"And\" statement - at command \(i+1)", eIndex: i )
                 case "or":
-                    displayError("Misplaced \"Or\" statement - at command \(i+1)", eIndex: i + 1)
+                    displayError("Misplaced \"Or\" statement - at command \(i+1)", eIndex: i)
                 default:
                     displayError("Unknown Command", eIndex: -1)
                 }
@@ -181,7 +181,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
             j += 1
         }
         if conditions.count < 1 {
-            displayError("No condition after \"If\" block - at command \(i+1)", eIndex: i + 1)
+            displayError("No condition after \"If\" block - at command \(i+1)", eIndex: i)
         }
         return conditions
     }
@@ -189,7 +189,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
     func booleanEvaluate(conditions: [Command]) -> Bool {
         print("evaluating condition booleans...")
         if conditions.count < 1 {
-            displayError("No condition after \"If\" block - at command \(i+1)", eIndex: i + 1)
+            displayError("No condition after \"If\" block - at command \(i+1)", eIndex: i)
             return false
         }
         var result = getBoolFromCommand(conditions[0])
@@ -198,7 +198,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
             //print("j \(j), count \(conditions.count), condition \((j+2) >= conditions.count)")
             if (j+1) >= conditions.count {
                 print()
-                displayError("Condition does not correctly place booleans and operators  - near command \(i+j+1)", eIndex: i + j + 1)
+                displayError("Condition does not correctly place booleans and operators  - near command \(i+j+1)", eIndex: i)
             }
             else if conditions[j].type == "and" {
                 result = result && getBoolFromCommand(conditions[j+1])
@@ -220,7 +220,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         else {
-            displayError("Expected \"Equals\" command, found \(command.type.uppercaseString) instead - at condition starting with command \(i+1)", eIndex: i + 1)
+            displayError("Expected \"Equals\" command, found \(command.type.uppercaseString) instead - at condition starting with command \(i+1)", eIndex: i)
             return false
         }
     }
