@@ -29,11 +29,13 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func continuePressed(sender: AnyObject) {
         print("inputFinished")
-        if inputField.text != nil && inputField.text?.characters.count > 0 {
+        if inputField.text != nil {
             if globalAsk != nil {
                 let realm = try! Realm()
                 try! realm.write() {
-                    globalAsk!.response = inputField.text!
+                    //trim whitespace
+                    let input = inputField!.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                    globalAsk!.response = input!
                 }
             }
         }

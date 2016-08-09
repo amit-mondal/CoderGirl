@@ -29,7 +29,6 @@ class BuildTopicsTableViewController: UITableViewController {
         let realm = try! Realm()
         print (realm.objects(CommandSet).count)
         if realm.objects(CommandSet).count <= 0 {
-            
             try! realm.write() {
                 realm.add(generateInitialSet())
             }
