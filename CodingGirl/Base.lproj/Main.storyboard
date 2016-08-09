@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Doll" translatesAutoresizingMaskIntoConstraints="NO" id="iDf-2W-UQD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Doll" translatesAutoresizingMaskIntoConstraints="NO" id="iDf-2W-UQD">
                                 <rect key="frame" x="411" y="309" width="149" height="227"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="qBs-dS-LQs"/>
@@ -32,7 +32,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIU-Ys-u2q">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIU-Ys-u2q">
                                 <rect key="frame" x="263" y="356" width="94" height="24"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Need Help?">
@@ -44,7 +44,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scx-of-8LC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scx-of-8LC">
                                 <rect key="frame" x="263" y="395" width="96" height="24"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Tap &quot;Learn&quot;!">
@@ -1160,7 +1160,7 @@
                                                 </constraints>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <string key="content">The "or" operator is, in many ways, the opposite of the "and" operator. Combining two conditions with an "and" will only ever yield a false condition if both the original two conditions are false.</string>
+                                                        <string key="content">The "or" operator is, in many ways, the opposite of the "and" operator. Combining two conditions with an "or" will only ever yield a false condition if both the original two conditions are false.</string>
                                                         <attributes>
                                                             <font key="NSFont" size="15" name="Avenir-Light"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -1311,13 +1311,13 @@
                                                 <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="DmV-0l-XRU"/>
-                                                    <constraint firstAttribute="height" constant="110" id="SCg-Yz-MQh"/>
+                                                    <constraint firstAttribute="height" constant="150" id="SCg-Yz-MQh"/>
                                                     <constraint firstAttribute="height" constant="56" id="mI3-E5-CAg"/>
                                                     <constraint firstAttribute="height" constant="55" id="pUD-F8-gjj"/>
                                                 </constraints>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <string key="content">You are now ready to begin creating your own basic programs in the "Build" portion of the app! Even if the last few pages were difficult to understand, you can learn through trial and error building your own conditions</string>
+                                                        <string key="content">You are now ready to begin creating your own basic programs in the "Build" portion of the app! Even if the last few pages were difficult to understand, you can learn through trial and error building your own conditions, and by looking at the sample program given.</string>
                                                         <attributes>
                                                             <font key="NSFont" size="15" name="Avenir-Light"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -1395,7 +1395,7 @@
                                             <constraint firstItem="xv2-NB-iII" firstAttribute="leading" secondItem="4WR-e9-DEV" secondAttribute="leading" constant="20" id="B6U-BU-PFV"/>
                                             <constraint firstItem="VcG-TY-7JY" firstAttribute="top" secondItem="4WR-e9-DEV" secondAttribute="top" constant="20" id="Bqb-6r-F58"/>
                                             <constraint firstItem="pBX-vw-DwA" firstAttribute="top" secondItem="KGQ-Df-EqX" secondAttribute="bottom" constant="5" id="Ej1-nd-bwc"/>
-                                            <constraint firstAttribute="height" constant="560" id="OmN-iE-Hr5"/>
+                                            <constraint firstAttribute="height" constant="590" id="OmN-iE-Hr5"/>
                                             <constraint firstItem="pBX-vw-DwA" firstAttribute="leading" secondItem="4WR-e9-DEV" secondAttribute="leading" constant="20" id="VhO-L5-g9B"/>
                                             <constraint firstItem="KGQ-Df-EqX" firstAttribute="top" secondItem="xv2-NB-iII" secondAttribute="bottom" constant="12" id="Yl2-2x-4V6"/>
                                             <constraint firstAttribute="trailing" secondItem="xv2-NB-iII" secondAttribute="trailing" constant="20" id="ZC1-cC-3GK"/>
@@ -1753,7 +1753,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type here, then tap return" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xKf-0l-xr8">
-                                <rect key="frame" x="10" y="78" width="519" height="30"/>
+                                <rect key="frame" x="10" y="90" width="519" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="WAV-Yn-v4Q"/>
                                     <constraint firstAttribute="height" constant="30" id="zaU-7u-7nq"/>
@@ -1809,8 +1809,8 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V56-eS-DMk">
-                                <rect key="frame" x="544" y="75" width="46" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V56-eS-DMk">
+                                <rect key="frame" x="544" y="88.5" width="46" height="33"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Return">
@@ -1826,10 +1826,10 @@
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4rC-Mr-vO4">
-                                <rect key="frame" x="265" y="183" width="16" height="186"/>
+                                <rect key="frame" x="265" y="195" width="16" height="174"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Some text" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gu5-6O-7ak">
-                                        <rect key="frame" x="8" y="8" width="0.0" height="170"/>
+                                        <rect key="frame" x="8" y="8" width="0.0" height="158"/>
                                         <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1852,14 +1852,24 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXI-xS-ydZ">
+                                <rect key="frame" x="277" y="52" width="47" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="tintColor" red="0.4431372549" green="0.69411764710000001" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Running">
+                                    <color key="titleColor" red="0.44313725490196076" green="0.69411764705882351" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7oj-nG-F71" secondAttribute="trailing" id="4Nm-p8-qhn"/>
                             <constraint firstItem="4rC-Mr-vO4" firstAttribute="leading" secondItem="1S7-Fn-unu" secondAttribute="trailing" constant="15" id="6Wm-vC-wue"/>
                             <constraint firstItem="7oj-nG-F71" firstAttribute="top" secondItem="Lil-zG-kWz" secondAttribute="bottom" id="6ii-i6-4XU"/>
-                            <constraint firstItem="xKf-0l-xr8" firstAttribute="top" secondItem="7oj-nG-F71" secondAttribute="bottom" constant="28" id="F5P-Gf-UFk"/>
+                            <constraint firstItem="xKf-0l-xr8" firstAttribute="top" secondItem="7oj-nG-F71" secondAttribute="bottom" constant="40" id="F5P-Gf-UFk"/>
                             <constraint firstItem="1S7-Fn-unu" firstAttribute="width" secondItem="5fR-a8-Rse" secondAttribute="width" multiplier="9/12" id="H3i-o7-cdf"/>
+                            <constraint firstItem="SXI-xS-ydZ" firstAttribute="top" secondItem="7oj-nG-F71" secondAttribute="bottom" constant="2" id="HCz-uC-SB4"/>
+                            <constraint firstItem="SXI-xS-ydZ" firstAttribute="centerX" secondItem="5fR-a8-Rse" secondAttribute="centerX" id="UnJ-AR-yQh"/>
                             <constraint firstItem="4rC-Mr-vO4" firstAttribute="top" secondItem="xKf-0l-xr8" secondAttribute="bottom" constant="75" id="Vco-go-mSm"/>
                             <constraint firstItem="1S7-Fn-unu" firstAttribute="height" secondItem="5fR-a8-Rse" secondAttribute="height" multiplier="5/12" id="Wbd-Fm-FoQ"/>
                             <constraint firstItem="1S7-Fn-unu" firstAttribute="leading" secondItem="5fR-a8-Rse" secondAttribute="leading" id="XEY-cX-6cR"/>
@@ -1891,6 +1901,7 @@
                         <outlet property="outputTextView" destination="Gu5-6O-7ak" id="pRX-aq-hCV"/>
                         <outlet property="setTitleLabel" destination="lwt-Io-W6e" id="rnS-PF-aXa"/>
                         <outlet property="speechRect" destination="Gu5-6O-7ak" id="glg-lo-jgM"/>
+                        <outlet property="statusButton" destination="SXI-xS-ydZ" id="mhT-SL-2yo"/>
                         <outlet property="widthConstraint" destination="3Kg-Ia-rhe" id="0eq-ei-5Sq"/>
                     </connections>
                 </viewController>

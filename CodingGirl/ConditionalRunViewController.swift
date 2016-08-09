@@ -19,6 +19,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var setTitleLabel: UILabel!
 
+    @IBOutlet weak var statusButton: UIButton!
 
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     
@@ -81,7 +82,14 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
             setTitleLabel.text = "New Command Set"
         }
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
             // Do any additional setup after loading the view.
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -98,6 +106,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
     
     func evaluate(set: CommandSet) {
         //inputField.userInteractionEnabled = false
+        self.statusButton.setTitle("Running", forState: .Normal)
         var list = set.commandList
         if (set.elseList.count > set.ifList.count) {
             displayError("Cannot have \"Else\" without \"If\"", eIndex: -1)
@@ -113,13 +122,16 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                 
                 switch command.type.lowercaseString {
                 case "ask":
-                    inputField.userInteractionEnabled = true
-                    inputField.becomeFirstResponder()
+                    if command.queryValue.characters.count > 0 {
+                        inputField.userInteractionEnabled = true
+                    }
                     speechRect.hidden = false
                     outputTextView.text = command.queryValue
+                    outputTextView.scrollRangeToVisible(NSRange(location:0, length:0))
                     print("Set Label to \(command.queryValue)")
                     globalAsk = command
                     print ("found ask, waiting for input...")
+                    self.statusButton.setTitle("Waiting for Input", forState: .Normal)
                     return
                 case "equals":
                     displayError("Misplaced \"Equals\" statement - at command \(i+1)", eIndex: i)
@@ -144,6 +156,7 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                 case "say":
                     speechRect.hidden = false
                     outputTextView.text = command.value
+                    outputTextView.scrollRangeToVisible(NSRange(location:0, length:0))
                     print("Set Label to \(command.value)")
                 case "else":
                     if !foundIf {
@@ -164,6 +177,10 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             i += 1
+            if (i >= self.commandSet?.commandList.count) {
+                self.statusButton.setTitle("Finished", forState: .Selected)
+                self.statusButton.selected = true
+            }
         }
     }
     
@@ -199,19 +216,19 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
             displayError("No condition after \"If\" block - at command \(i+1)", eIndex: i)
             return false
         }
-        var result = getBoolFromCommand(conditions[0])
         var j = 1
+        var result = getBoolFromCommand(conditions[0], jIndex: j)
         while j < conditions.count {
             //print("j \(j), count \(conditions.count), condition \((j+2) >= conditions.count)")
             if (j+1) >= conditions.count {
                 print()
-                displayError("Condition does not correctly place booleans and operators  - near command \(i+j+1)", eIndex: i)
+                displayError("Condition does not correctly place booleans and operators  - near command \(i+j+1)", eIndex: i + j)
             }
             else if conditions[j].type == "and" {
-                result = result && getBoolFromCommand(conditions[j+1])
+                result = result && getBoolFromCommand(conditions[j+1], jIndex: j)
             }
             else if conditions[j].type == "or" {
-                result = result || getBoolFromCommand(conditions[j+1])
+                result = result || getBoolFromCommand(conditions[j+1], jIndex: j)
             }
             j+=2
         }
@@ -219,7 +236,11 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func getBoolFromCommand(command: Command) -> Bool {
+    func getBoolFromCommand(command: Command, jIndex: Int) -> Bool {
+        if !askExists(self.commandSet!, ask: command.left!) {
+            displayError("\"Ask\" command compared in this \"Equals\" command does not exist - at command \(i + jIndex + 1)", eIndex: i + jIndex)
+            return false
+        }
         if command.evalEquals() == "t" {
             return true
         }
@@ -227,14 +248,27 @@ class ConditionalRunViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         else {
-            displayError("Expected \"Equals\" command, found \(command.type.uppercaseString) instead - at condition starting with command \(i+1)", eIndex: i)
+            displayError("Expected \"Equals\" command, found \(command.type.uppercaseString) instead - at command \(i+jIndex+1)", eIndex: i+jIndex)
             return false
         }
+    }
+    
+    func askExists(set: CommandSet, ask: Command) -> Bool {
+        let askList = set.askList
+        for sAsk in askList {
+            if sAsk.queryValue == ask.queryValue {
+                return true
+            }
+        }
+        return false
     }
     
     
     
     func displayError(error: String, eIndex: Int) {
+            self.statusButton.tintColor = UIColor.redColor()
+            self.statusButton.setTitle("Error Found", forState: .Selected)
+            self.statusButton.selected = true
         var alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
         let ok = UIAlertAction(title: "OK", style: .Default, handler: {[unowned self, eIndex]  (action) -> Void in
             let buildVC = self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 2] as! ConditionalBuildViewController

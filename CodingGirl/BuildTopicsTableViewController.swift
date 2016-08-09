@@ -48,24 +48,32 @@ class BuildTopicsTableViewController: UITableViewController {
     func generateInitialSet() -> CommandSet {
         print("generating initial set")
         var set = CommandSet()
-        for index in 0...7 {
+        for index in 0...11 {
             var command = Command()
             switch index {
             case 0:
-                command.construct("ask", sInput: "How are you doing today?")
+                command.construct("ask", sInput: "This is an example to teach you some basics (Press \"Return\" to continue)")
             case 1:
-                command.construct("if")
+                command.construct("ask", sInput: "Use \"Ask\" commands instead of \"Say\" commands when you want me to wait after saying something")
             case 2:
-                command.construct("equals", aValue: "good", aLeft: set.commandList[0])
+                command.construct("ask", sInput: "You don't always have to use \"Ask\" statements in conditions - they can also be used like a \"Say\" command with a pause at the end")
             case 3:
-                command.construct("or")
+                command.construct("ask", sInput: "Here's that example conversation you saw in the Learn section")
             case 4:
-                command.construct("equals", aValue: "great", aLeft: set.commandList[0])
+                command.construct("ask", sInput: "How are you doing today?")
             case 5:
-                command.construct("say", sInput: "That's great!")
+                command.construct("if")
             case 6:
-                command.construct("else")
+                command.construct("equals", aValue: "good", aLeft: set.commandList[4])
             case 7:
+                command.construct("or")
+            case 8:
+                command.construct("equals", aValue: "great", aLeft: set.commandList[4])
+            case 9:
+                command.construct("say", sInput: "That's great!")
+            case 10:
+                command.construct("else")
+            case 11:
                 command.construct("say", sInput: "Uh-oh")
             default:
                 print("uh oh")

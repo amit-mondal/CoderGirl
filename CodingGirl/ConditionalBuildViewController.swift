@@ -177,6 +177,9 @@ class ConditionalBuildViewController: UIViewController, UICollectionViewDelegate
             commandSet.add(command)
         }
         tableView.reloadData()
+        //scroll to the bottom of the tableView
+        let path = NSIndexPath(forRow: self.commandSet.commandList.count - 1, inSection: 0)
+        self.tableView.scrollToRowAtIndexPath(path, atScrollPosition: .Bottom, animated: true)
     }
     
     func displayError(error: String) {
@@ -339,7 +342,6 @@ extension ConditionalBuildViewController: UITableViewDelegate, UITableViewDataSo
         if (editingStyle == .Delete) {
             let newSet = self.commandSet.setWithoutElement(indexPath.row)
             self.commandSet = newSet
-            
         }
     }
     
